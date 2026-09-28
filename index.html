@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Rate das Bild!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <button id="muteBtn" class="mute" aria-label="Sound">🔊</button>
+
+  <!-- HAUPTMENÜ -->
+  <section id="screen-menu" class="screen active">
+    <i class="star" style="--x:868;--y:165;--s:110;--r:15deg"></i>
+    <i class="star" style="--x:85;--y:368;--s:110;--r:-15deg"></i>
+    <i class="star" style="--x:62;--y:935;--s:110;--r:10deg"></i>
+    <div class="circle" style="--d:51.5;--t:10"></div>
+    <h1 class="ttl main-ttl"><span>RATE</span><span>DAS BILD!</span></h1>
+    <div class="col" style="top:50cqw">
+      <button class="btn" id="bPlay">Spielen</button>
+      <button class="btn" id="bHelp">Anleitung</button>
+      <button class="btn red" id="bReset">Zurücksetzen</button>
+    </div>
+  </section>
+
+  <!-- SPIELEN (Level 1-3) -->
+  <section id="screen-play" class="screen">
+    <i class="star" style="--x:925;--y:403;--s:110;--r:15deg"></i>
+    <i class="star" style="--x:45;--y:903;--s:110;--r:-10deg"></i>
+    <div class="circle" style="--d:30.9;--t:10"></div>
+    <h1 class="ttl play-ttl">SPIELEN</h1>
+    <div class="col" id="lvlList" style="top:45.5cqw;gap:2.7cqw"></div>
+    <div class="col" style="top:84.8cqw"><button class="btn red" id="bPlayBack">Zurück</button></div>
+  </section>
+
+  <!-- ANLEITUNG -->
+  <section id="screen-help" class="screen">
+    <i class="star" style="--x:930;--y:60;--s:100;--r:15deg"></i>
+    <i class="star" style="--x:30;--y:900;--s:100;--r:-10deg"></i>
+    <h1 class="ttl grid-ttl" style="top:4cqw">ANLEITUNG</h1>
+    <div class="helpcard">
+      <ul>
+        <li><b>Ziel:</b> tebak kata Jerman dari foto. Kata benda ditulis <b>lengkap dengan artikel</b> (mis. <i>die Autobahn</i>). Huruf besar/kecil tidak masalah, ä/ö/ü/ß boleh ditulis ae/oe/ue/ss.</li>
+        <li><b>Level:</b> hanya Level 1 yang terbuka. Selesaikan Level 1 → Level 2 terbuka → selesaikan Level 2 → Level 3 terbuka.</li>
+        <li><b>Nyawa ❤:</b> ada 5. Jawaban salah = −1. Kalau habis, kamu mulai lagi dari soal 1 di level itu dan level sebelumnya terkunci lagi.</li>
+        <li><b>Hint 💡:</b> 5 hint per level (soal 1–14). Tekan lampu: hint 1 = jenis kata/artikel, hint 2 = jumlah huruf, hint 3–5 = huruf yang dibuka.</li>
+        <li><b>Soal 15 (merah):</b> tanpa hint dan pakai timer (1 menit di Level 1–2, 2 menit di Level 3). Waktu habis = −1 nyawa.</li>
+        <li><b>Simpan otomatis:</b> kalau keluar, kamu bisa lanjut dari soal terakhir. <b>Zurücksetzen</b> menghapus semua progres.</li>
+      </ul>
+    </div>
+    <div class="col" style="top:86cqw"><button class="btn red" id="bHelpBack" style="height:9cqw">Zurück</button></div>
+  </section>
+
+  <!-- SOAL 1-15 -->
+  <section id="screen-grid" class="screen">
+    <i class="star" style="--x:938;--y:95;--s:110;--r:15deg"></i>
+    <i class="star" style="--x:72;--y:886;--s:110;--r:-10deg"></i>
+    <h1 class="ttl grid-ttl" id="gridTitle">LEVEL 1</h1>
+    <div id="tiles"></div>
+    <button class="btn red back-br" id="bGridBack">Zurück</button>
+  </section>
+
+  <!-- SPIELANSICHT -->
+  <section id="screen-game" class="screen">
+    <button class="btn red back-sm" id="bGameBack">Zurück</button>
+    <div class="lives" id="lives"></div>
+    <button class="lamp" id="lamp"><span class="bulb">💡</span><span id="hintCount">5</span></button>
+    <div class="counter" id="counter">1/15</div>
+    <div class="card" id="card">
+      <img id="qimg" alt="">
+      <div class="ph" id="ph"><div>nanti soal<br>foto²nya disini<small id="phPath"></small></div></div>
+      <div class="hintstrip" id="hintStrip"></div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <input id="answer" type="text" placeholder="Deine Antwort" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <button class="btn go" id="bCheck">Prüfen</button>
+  </section>
+
+  <div id="modal"><div class="mbox"><h2 class="ttl" id="mTitle"></h2><p id="mText"></p><div id="mBtns"></div></div></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
